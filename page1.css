@@ -1,0 +1,329 @@
+/* 这个样式表对应index.html */
+@import "highlight/styles/github-dark-dimmed.min.css";
+
+.bgdiv {
+    background-image: url(image/bg.png);
+    background-position: center -10px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    top: -10px;
+    height: 530px;
+    margin: -26px;
+    width: 102%;
+    z-index: 0;
+    animation-name: bganima;
+    animation-duration: 0.5s;
+}
+
+@keyframes bganima{
+    0% {
+        opacity: 0;
+        height: 400px;
+        background-position: center -140px;
+    }
+    100% {
+        opacity: 1;
+        height: 530px;
+        background-position: center -10px;
+    }
+}
+
+.top {
+    font-size: 32px;
+    font-family: 'Courier New', Courier, monospace;
+    background: #fefefe;
+    height: 70px;
+    width: 100%;
+    opacity: 0.9;
+    box-shadow: 2px 2px 10px #808080;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.top .home1 {
+    float: left;
+    padding-left: 0.5em;
+}
+
+.top .home {
+    display: block;
+    float: left;
+    margin-top: 0.6em;
+}
+
+.top .home img {
+    height: 70px;
+    transform: translate(5px, -15px);
+    float: left;
+}
+
+.top .nav {
+    display: inline-block;
+    text-align: center;
+    position: inherit;
+    margin-left: -280px;
+    margin-top: 0.6em;
+    padding: 0;
+    left: 50%;
+}
+
+.top .nav li {
+    font-size: 22px;
+    display: inline-block;
+    width: auto;
+}
+
+.top a {
+    text-decoration: none;
+    color: inherit;
+    width: auto;
+    transition-duration: 0.3s;
+}
+
+.top a:hover {
+    color: #ff9050;
+}
+
+.bottom {
+    position: relative;
+    top: 65%;
+    left: 0;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 2px 2px 10px#000000;
+    z-index: 1;
+}
+
+.bottom h1 {
+    font-size: 40px;
+    font-weight: 500;
+    font-family: "'Merriweather Sans',Helvetica,Tahoma,Arial,'PingFang SC','Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei',sans-serif";
+    letter-spacing: 4px;
+    padding-bottom: 2px;
+    margin-bottom: 2px;
+}
+
+.bottom p {
+    font-weight: 200;
+    font-size: 30px;
+    margin: 2px;
+    text-transform: capitalize;
+}
+
+.main {
+    position: relative;
+    left: 10%;
+    max-width: 65%;
+    margin-top: 40px;
+    animation-name: mainanima;
+    animation-duration: 0.6s;
+    /* border-right: 1px solid#aaaaaa; */
+}
+
+@keyframes mainanima {
+    0% {
+        opacity: 0;
+        transform: translateY(400px);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.main .img1 {
+    width: 100%;
+    height: auto;
+    box-shadow: 2px 2px 5px #aaa;
+}
+
+.main p {
+    font: 14px 'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif', 'source-han-serif-sc', 'PT Serif', 'SongTi SC', 'MicroSoft Yahei', Georgia, serif;
+    line-height: 2.4em;
+    margin: 20px;
+    color: #808080;
+}
+
+.main .begin {
+    float: left;
+    font: 500 2.6em 'Times New Roman', Times, serif, 'Simsun', 'Microsoft YaHei';
+    color: #4b4b4b;
+}
+
+.main h3 {
+    font: 20px 'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif', 'source-han-serif-sc', 'PT Serif', 'SongTi SC', 'MicroSoft Yahei', Georgia, serif;
+    color: #4b4b4b
+}
+
+.main h3::before {
+    display: inline;
+    content: "# ";
+    color: #fa7070;
+}
+
+.main h4 {
+    font: 18px 'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif', 'source-han-serif-sc', 'PT Serif', 'SongTi SC', 'MicroSoft Yahei', Georgia, serif;
+    color: #5f5f5f;
+    margin-left: 1.5em;
+}
+
+.main h4::before {
+    content: "-->";
+    color: inherit;
+    left: 1em;
+}
+
+.main h4::after {
+    content: "<--";
+    color: inherit;
+}
+
+.main .emp {
+    background-color: #ffffc0;
+    color: #ff9050;
+}
+
+.main hr {
+    color: #aaaaaa;
+}
+
+.main a {
+    position: relative;
+    text-decoration: none;
+    color: #fa7070;
+    transition: all 0.5s;
+    white-space: nowrap;
+}
+
+.main a::after {
+    content: '';
+    width: 100%;
+    top: 100%;
+    height: 1.3px;
+    left: 0;
+    background-color: currentColor;
+    display: inline-block;
+    position: absolute;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: all 0.5s;
+}
+
+.main a:hover {
+    color: #f62d1b;
+}
+
+.main a:hover::after {
+    transform: scaleX(1);
+}
+
+.sidebar {
+    width: 15%;
+    height: 500px;
+    float: right;
+    position: sticky;
+    top: 2em;
+    right: 8%;
+    transform: translateY(10%);
+}
+
+.sidebar {
+    font: 16px 'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif', 'source-han-serif-sc', 'PT Serif', 'SongTi SC', 'MicroSoft Yahei', Georgia, serif;
+    letter-spacing: 0;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 10;
+    padding-inline-start: 0;
+}
+
+.sidebar a {
+    line-height: 30px;
+    text-decoration: none;
+    color: #5f5f5f;
+    border-left: 3px solid#aaaaaa;
+}
+
+code {
+    display: block;
+    box-shadow: 2px 2px 10px #555;
+    border-radius: 5px;
+    width: 90%;
+    height: 300px;
+    scrollbar-color: auto #ffb500;
+    font: 20px Source Code Pro, Consolas, Menlo, Monaco, Courier New,
+        monospace !important;
+    overflow-x: hidden !important;
+    overflow-y: auto;
+    tab-size: 2em;
+}
+
+.low {
+    height: 200px;
+}
+
+code::-webkit-scrollbar
+{
+    width:8px;
+    height:16px;
+    background-color:rgb(34, 39, 46);
+}
+code::-webkit-scrollbar-track
+{
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+    border-radius: 2px;
+    background-color:rgb(34, 39, 46);
+}
+code::-webkit-scrollbar-thumb
+{
+    border-radius: 2px;
+    /* -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3); */
+    background-color:#aaa;
+}
+
+.hljs-ln-numbers {
+    display: inline-block;
+    text-align: left;
+    color: #ccc;
+    border-right: 1px solid #CCC;
+    vertical-align: top;
+    width: 2em;
+    margin-right: 1em;
+    height: 1.1em;
+}
+
+footer {
+    text-align: center;
+    font: 200 12px 'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif', 'source-han-serif-sc', 'PT Serif', 'SongTi SC', 'MicroSoft Yahei', Georgia, serif;
+    letter-spacing: 1px;
+    line-height: 10em;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 20px;
+}
+
+footer div {
+    margin: 5px;
+    padding: 5px;
+    line-height: 5px;
+}
+
+footer a {
+    text-decoration: none;
+    color: inherit;
+}
+
+footer a:hover {
+    color: orange;
+}
+
+footer img {
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: middle;
+    padding-right: 2px;
+    padding-left: 1em;
+}
+

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyWeb</title>
+    <base target="_blank">
+    <style>
+       .nav {
+            width: 15%;
+            height: 100%;
+            float: left;
+            padding: 4px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-right: 1px solid #aaa;
+            background-color: rgba(0, 0, 0, 0.1);
+       }
+       .nav h3 {
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif, 'Microsoft Yahei';
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 24px;
+            padding: 0;
+            padding-left: 2px;
+            margin: 0;
+            margin-top: 1em;
+       }
+       .nav ul {
+            list-style-type: none;
+            margin: 2px;
+            padding-left: 1em;
+       }
+       .nav ul a {
+            display: block;
+            width: 100%;
+            height: 2em;
+            line-height: 2em;
+            text-decoration: none;
+       }
+       .nav ul a:hover {
+            text-decoration: underline;
+       }
+       .main {
+            position: absolute;
+            top: 0;
+            left: 16%;
+            float: left;
+            width: 75%;
+       }
+       .main h2 {
+            font-size: 30px;
+            font-weight: 500;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            letter-spacing: 5px;
+       }
+       .main h3 {
+            font-size: 24px;
+            font-weight: 500;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            letter-spacing: 5px;
+       }
+       .main img {
+            display: inline-block;
+            height: 200px;
+            float: left;
+       }
+       .main .nimg {
+            display: inline-block;
+            height: inherit;
+            float: left;
+            position: relative;
+            left: 5px;
+            vertical-align: center;
+       }
+       .main .cls{
+            clear: both;
+       }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <h3>第一大标题</h3>
+        <hr />
+        <ul>
+            <li><a href="#">第一栏</a></li>
+            <li><a href="#">第二栏</a></li>
+            <li><a href="#">第三栏</a></li>
+            <li><a href="#">第四栏</a></li>
+        </ul>
+        <h3>第二大标题</h3>
+        <hr />
+        <ul>
+            <li><a href="#">一</a></li>
+            <li><a href="#">二</a></li>
+            <li><a href="#">三</a></li>
+        </ul>
+    </div>
+    <div class="main">
+        <div>
+            <h2>黄·君翊</h2>
+            <hr />
+            <img src="image/wang.png" alt="网络有问题，加载不出来" title="其实这个是王国豪">
+            <hr />
+            <span class="nimg">
+                黄君翊<br />
+                2004年10月2日生<br />
+                目前就读与<a href="https://www.hust.edu.cn">华中科技大学</a>(HUST)<br />
+                计算机科学与技术2209班
+            </span>
+        </div>
+        <div class="cls"></div>
+        <div>
+            <h3>联系我</h3>
+            <hr />
+            <p>我的联系电话: 15872631159</p>
+            <p>我的邮箱: Ikuuxi@outlook.com 或 598482334@qq.com</p>
+            <p>我的QQ: 598482334</p>
+        </div>
+        <div>
+            <h3>下面是子页面的超链接</h3>
+            <hr />
+            <a href="#">第一个页面</a><br/>
+            <a href="#">第二个页面</a><br/>
+            <a href="#">第三个页面</a><br/>
+            <a href="page1.html">实验页面一(开发中)</a><br/>
+            <a href="#">实验页面二(开发中)</a><br/>
+        </div>
+    </div>
+</body>
+</html>

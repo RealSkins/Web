@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画animation</title>
+    <style>
+        div {
+            position: absolute;
+            line-height: 64px;
+            text-align: center;
+            background-color: darkturquoise;
+            top: 100px;
+            width: 80px;
+            height: 64px;
+            animation-name: box1;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            animation-direction: normal;
+        }
+
+        @keyframes box1 {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(30em) rotate(360deg);
+            }
+            100% {
+                transform: translateX(0) rotate(720deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div>CSS</div>
+</body>
+</html>

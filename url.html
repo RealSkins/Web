@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试导航栏，还有超链接</title>
+    <style>
+        * {
+            cursor: pointer;/*有意思*/
+        }
+        .sty1 {
+            list-style-type: none;
+        }
+        .sty1 li {
+            display: block;
+            width: 10%;
+            height: 30px;
+            background-color: rgba(0, 0, 0, 0.3);
+            font-size: 18px;
+            line-height: 30px;
+            padding-left: 1em;
+        }
+        .sty1 li:hover, 
+        .sty2 li:hover{
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #fff;
+        }
+        .sty2 {
+            list-style-type: none;
+        }
+        .sty2 li {
+            float: left;
+        }
+        .sty2 li a {
+            display: inline-block;
+            text-decoration: none;
+            height: 30px;
+            width: 5em;
+            text-align: center;
+            line-height: 30px;
+            font-size: 18px;
+            color: inherit;
+            padding: 0;
+            margin: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        hr {
+            color: #aaaaaa;
+        }
+        a {
+            position: relative;
+            text-decoration: none;
+            color: orange;
+            transition: all 0.5s;
+        }
+        a::after {
+            content: '';
+            width: 100%;
+            top: 100%;
+            height: 1px;
+            left: 0;
+            background-color: currentColor;
+            display: inline-block;
+            position: absolute;
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: all 0.5s;
+        }
+        a:hover {
+            color: #ff8500;
+        }
+        a:hover::after {
+            transform: scaleX(1);
+        }
+    </style>
+</head>
+<body>
+    <ul class="sty1">
+        <li>第一条</li>
+        <li>第二条</li>
+        <li>第三条</li>
+        <li>第四条</li>
+        <li>第五条</li>
+    </ul>
+    <hr />
+    <ul class="sty2">
+        <li><a href="#">第一条</a></li>
+        <li><a href="#">第二条</a></li>
+        <li><a href="#">第三条</a></li>
+        <li><a href="#">第四条</a></li>
+        <li><a href="#">第五条</a></li>
+    </ul>
+    <hr />
+    <br />
+    <a href="#">超链接。。。。。。。。。。。。。。。。。。。。</a>
+</body>
+</html>
