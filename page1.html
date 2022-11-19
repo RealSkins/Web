@@ -7,6 +7,7 @@
     <title>实验页面</title>
     <base target="_blank">
     <link rel="stylesheet" href="style/page1.css">
+    <link rel="shortcut icon" href="image/icon.ico">
 </head>
 <body>
 
@@ -179,7 +180,48 @@ a:hover::after {
 
         <p>通过侧边栏定位正文时有一个<span class="emp">非常突兀</span>的地方，就是跳转是一下子直接切过去，看着特别不舒服，解决方法是在CSS里面<span class="emp">设置整体属性scroll-behavior为smooth</span>。这样点击的时候就是滚动过去的。</p>
 
-        <p></p>
+        <p>在<a href="#bottom" target="_self">文章结尾</a>的地方我加了一个小小的CSS动画，就是一个方块从左向右再向左往复运动，设置次数无限，设置周期3s，看着还挺好玩的就留在这里了</p>
+
+        <pre>
+            <code class="css">.main .box {
+    position: relative;
+    top: 20px;
+    width: inherit;
+    height: 8em;
+}
+
+.main .box .boxanima {
+    display: inline-block;
+    width: 72px;
+    height: 64px;
+    position: absolute;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 64px;
+    background-color: #fa7070;
+    color: #4b4b4b;
+    font-size: 20px;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif', 'source-han-serif-sc', 'PT Serif', 'SongTi SC', 'MicroSoft Yahei', Georgia, serif;
+    animation-name: boxanima;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes boxanima {
+    0% {
+        left: 0%;
+    }
+    50% {
+        left: 90%;
+        transform: rotate(360deg);
+    }
+    100% {
+        left: 0%;
+        transform: rotate(720deg);
+    }
+}
+            </code>
+        </pre>
 
         <h3>III-JS 部分</h3><hr />
         
@@ -246,7 +288,7 @@ a:hover::after {
 
         <p>显示不完整？等我以后以后以后加一个全屏。。。</p>
 
-        <h4>一些问题</h4>
+        <h3>IV-一些问题</h3><hr />
 
         <p>2022/11/18</p>
 
@@ -254,9 +296,15 @@ a:hover::after {
         
         <p id="point1">但是侧边栏的跳转有一个很大的问题，就是单纯使用html提供的锚点跳转会导致<span class="emp">顶栏遮挡住一部分内容</span>，解决办法是截停url的跳转动作并使用JS进行跳转。万能的CSS竟然还有不能设置的地方，感觉非常地难受，先就这么放着吧，等我什么时候有时间了再去追加这段玩意。</p>
 
-        <p>还好<a href="#point1" target="_self">这个问题</a>马上得到了解决，就是在js初始化侧边栏的时候给每一个锚点前面加一个暗锚，让其定位向上偏移，而且侧边栏指向那个暗锚，这要就基本解决了。不过非侧边栏的锚点链接这样就要手动调整，就拉倒好了。</p><hr />
+        <p>还好<a href="#point1" target="_self">这个问题</a>马上得到了解决，就是在js初始化侧边栏的时候给每一个锚点前面加一个暗锚，让其定位向上偏移，而且侧边栏指向那个暗锚，这要就基本解决了。不过非侧边栏的锚点链接这样就要手动调整，就拉倒好了。</p>
+
+        <p>2022/11/19</p>
+
+        <p>在用侧边栏定位的时候发现一个小小的细节，点击之后url处也会多出一个#什么什么，所以可以考虑阻止html提供的跳转而改用js自己写一个函数来滚动到对应位置。不过什么时候写就不知道了，难度太大，我不想搞，爬。</p><hr />
 
         <a href="#top" target="_self">回到顶部</a>
+
+        <a class="target-fix" id="bottom"></a>
 
         <div class="box">
             <div class="boxanima" id="interesting"></div>
