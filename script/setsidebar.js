@@ -45,12 +45,26 @@ function getAndSetLabel() {
         else {
             subtop.appendChild(tmp);
             tmp.setAttribute('name', 'sub-topic-list');
-            tmp_a.innerHTML = '&nbsp;&nbsp;&nbsp' + head[i].innerHTML;//填写内容
+            tmp_a.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp' + head[i].innerHTML;//填写内容
         }
     }
 };
 
+function interesting(){
+    var rand = Math.floor(Math.random()*30000);
+    var target = document.getElementById("interesting");
+    if(rand < 10000){
+        target.innerHTML = "HTML";
+    }
+    else if(rand >= 10000 && rand < 20000){
+        target.innerHTML = "CSS";
+    }
+    else{
+        target.innerHTML = "JS";
+    }
+}
 
 function sideInit(){
     getAndSetLabel();
+    interesting();
 }

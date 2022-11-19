@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="style/page1.css">
 </head>
 <body>
+
+    <a class="target-fix" id="top"></a>
+
     <div class="bgdiv">
         <div class="top">
             <span class="home"><a href="index" target="_self"><img src="image/logo.png"><em class="home1">HOME</em></a></span>
@@ -48,6 +51,12 @@
         <h4>推荐使用的编写软件</h4>
 
         <p>陈加忠老师在讲授HTML时教的时dw，但是我用的仍是vscode手写代码，开始挺后悔，后来看见其他人做网页那个效率和效果。。。一言难尽，庆幸使用的vscode，最后来还是学了一些关于前端东西，算是多多少少有一点收获。</p>
+
+        <h4>绝对路径和相对路径</h4>
+
+        <p>这个页面内的所有引用全部使用了相对路径，但是有一点小小的坑，我是用的是vscode里面一个叫<span class="emp"><a href="https://github.com/ritwickdey/vscode-live-server-plus-plus">live server</a></span>的插件，我之前在所有引用本地文件时在文件夹前加<span>/</span>正斜杠，在这个live server中打开完全没有问题，但是单独打开网页就会找不到文件，所以后来就把正斜杠删掉了。</p>
+
+        <p>其次就是跳转的我自己的其他页面时，在本地需要加后缀<span class="emp">.html</span>，而挂在github上时是不需要加.html的，于是我就删掉后缀了，特此说明。</p>
         
         <h3>II-CSS 部分</h3><hr />
         
@@ -166,6 +175,12 @@ a:hover::after {
         
         <p>文字部分的过渡。</p>
 
+        <h4>锚点链接跳转时的平滑滚动</h4>
+
+        <p>通过侧边栏定位正文时有一个<span class="emp">非常突兀</span>的地方，就是跳转是一下子直接切过去，看着特别不舒服，解决方法是在CSS里面<span class="emp">设置整体属性scroll-behavior为smooth</span>。这样点击的时候就是滚动过去的。</p>
+
+        <p></p>
+
         <h3>III-JS 部分</h3><hr />
         
         <h4>显示侧边栏</h4>
@@ -237,11 +252,15 @@ a:hover::after {
 
         <p>理论上还缺少一个监视滚动条的脚本，然后翻页翻到哪时就把侧边栏的那一条给它加黑加粗，但是我懒得搞了，现在看见JS就像吐，以后如果工作绝对不碰前端。</p>
         
-        <p id="point1">但是侧边栏的跳转有一个很大的问题，就是单纯使用html提供的锚点跳转会导致<span class="emp">顶栏遮挡住一部分内容</span>，解决办法是截停url的跳转动作并使用JS进行跳转。万能的CSS竟然还有不能设置的地方，感觉非常地难受，先就这么放着吧，等我什么时候有时间了再去追加这段玩意。</p><hr />
+        <p id="point1">但是侧边栏的跳转有一个很大的问题，就是单纯使用html提供的锚点跳转会导致<span class="emp">顶栏遮挡住一部分内容</span>，解决办法是截停url的跳转动作并使用JS进行跳转。万能的CSS竟然还有不能设置的地方，感觉非常地难受，先就这么放着吧，等我什么时候有时间了再去追加这段玩意。</p>
 
-        <p>还好<a href="#point1" target="_self">这个问题</a>马上得到了解决，就是在js初始化侧边栏的时候给每一个锚点前面加一个暗锚，让其定位向上偏移，而且侧边栏指向那个暗锚，这要就基本解决了。不过非侧边栏的锚点链接这样就要手动调整，就拉倒好了</p>
+        <p>还好<a href="#point1" target="_self">这个问题</a>马上得到了解决，就是在js初始化侧边栏的时候给每一个锚点前面加一个暗锚，让其定位向上偏移，而且侧边栏指向那个暗锚，这要就基本解决了。不过非侧边栏的锚点链接这样就要手动调整，就拉倒好了。</p><hr />
 
-        <a href="#" target="_self">回到顶部</a>
+        <a href="#top" target="_self">回到顶部</a>
+
+        <div class="box">
+            <div class="boxanima" id="interesting"></div>
+        </div>
 
     </div>
     <footer>
