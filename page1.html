@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>实验页面</title>
     <base target="_blank">
-    <link rel="stylesheet" href="page1.css">
+    <link rel="stylesheet" href="style/page1.css">
 </head>
 <body>
     <div class="bgdiv">
@@ -53,8 +53,10 @@
         
         <h4>highlight插件</h4>
 
-        <p>话不多说先上代码，代码块由<span class="emp">highlight.js包</span>生成，我的做法是在这个页面对应的css样式表内import一个"/highlight/styles/github-dark-dimmed.min.css"样式表, 然后结尾引入<a href="https://highlightjs.org/">/highlight/highlight.min.js"</a>(格式化和高亮生成代码)和<a href="http://wcoder.github.io/highlightjs-line-numbers.js/">/highlight/highlightjs-line-numbers.min.js</a>(代码前加行标)就像<a href="#">这样。</a></p>
+        <p>话不多说先上代码，代码块由<span class="emp">highlight.js包</span>生成，我的做法是在这个页面对应的css样式表内import一个"/highlight/styles/github-dark-dimmed.min.css"样式表, 然后结尾引入<a href="https://highlightjs.org/">/highlight/highlight.min.js"</a>(格式化和高亮生成代码)和<a href="http://wcoder.github.io/highlightjs-line-numbers.js/">/highlight/highlightjs-line-numbers.min.js</a>(代码前加行标)就像<a href="#code1" target="_self">这样。</a></p>
         
+        <a class="target-fix" id="code1"></a>
+
         <pre>
             <code class="language-c, low">#define _CRT_SECURE_NO_WARNINGS
 #include &ltstdio.h&gt
@@ -170,7 +172,7 @@ a:hover::after {
 
         <p>前面已经说过，我不很会JS，等我什么时候会了就再来增加这部分吧，侧边栏暂时先不放了，学业繁忙，头发要紧。。。</p>
         
-        <p>急急忙忙竟然把JavaScript学了不少，像模像样敲了个自动生成侧边栏，代码可以优化，而且继续优化，不知道敲的个什么鬼东西。</p>
+        <p>急急忙忙竟然把JavaScript学了不少，像模像样敲了个自动生成侧边栏，代码可以优化，而且继续优化，起码现在知道的就是这段代码重复性太高，而且做了不少无用功，以至于前面一段可以直接用<span class="emp">querySelector</span>(<del>当时我还不知道</del>)，最后不知道敲的个什么鬼东西。</p>
 
         <pre>
             <code class="JavaScript">function getAndSetLabel() {
@@ -229,11 +231,18 @@ a:hover::after {
 
         <p>显示不完整？等我以后以后以后加一个全屏。。。</p>
 
+        <h4>一些问题</h4>
+
         <p>2022/11/18</p>
 
         <p>理论上还缺少一个监视滚动条的脚本，然后翻页翻到哪时就把侧边栏的那一条给它加黑加粗，但是我懒得搞了，现在看见JS就像吐，以后如果工作绝对不碰前端。</p>
         
-        <p>但是侧边栏的跳转有一个很大的问题，就是单纯使用html提供的锚点跳转会导致<span class="emp">顶栏遮挡住一部分内容</span>，解决办法是截停url的跳转动作并使用JS进行跳转。万能的CSS竟然还有不能设置的地方，感觉非常地难受，先就这么放着吧，等我什么时候有时间了再去追加这段玩意。</p><hr />
+        <p id="point1">但是侧边栏的跳转有一个很大的问题，就是单纯使用html提供的锚点跳转会导致<span class="emp">顶栏遮挡住一部分内容</span>，解决办法是截停url的跳转动作并使用JS进行跳转。万能的CSS竟然还有不能设置的地方，感觉非常地难受，先就这么放着吧，等我什么时候有时间了再去追加这段玩意。</p><hr />
+
+        <p>还好<a href="#point1" target="_self">这个问题</a>马上得到了解决，就是在js初始化侧边栏的时候给每一个锚点前面加一个暗锚，让其定位向上偏移，而且侧边栏指向那个暗锚，这要就基本解决了。不过非侧边栏的锚点链接这样就要手动调整，就拉倒好了</p>
+
+        <a href="#" target="_self">回到顶部</a>
+
     </div>
     <footer>
         <div>Constructed by Huang</div>
@@ -246,60 +255,9 @@ a:hover::after {
     </footer>
     <script src="highlight/highlight.min.js"></script>
 	<script src="highlight/highlightjs-line-numbers.min.js"></script>
+    <script src="script/setsidebar.js"></script>
 	<script>hljs.highlightAll();</script>
 	<script>hljs.initLineNumbersOnLoad();</script>
-    <script>
-            function getAndSetLabel() {
-                var label;
-                var head;
-                var i;
-                var tmp, tmp_a;
-                var subtop;
-                var topic;
-                var side = document.getElementById("sidebar");
-                var area = document.getElementById("main");
-                for (i = 1; i <= 4; i++) {
-                    head = area.getElementsByTagName('h' + i);
-                    for (let j = 0; j < head.length; j++) {
-                        head[j].setAttribute('name', 'h');
-                    }
-                }
-                head = document.getElementsByName('h');
-                for (i = 0; i < head.length; i++) {
-                    label = 'topic-' + (i + 1);
-                    head[i].setAttribute('id', label);
-                }
-                // var test = document.getElementById("text");
-                for(i = 0; i < head.length; i++){
-                    topic = document.getElementById('topic-'+(i+1));
-                    if(head[i].tagName == 'H3'){
-                        // test.innerHTML += topic.innerHTML;
-                        tmp = document.createElement("li");//创建一个列表元素li。
-                        tmp_a = document.createElement("a");//创建一个超链接元素a等会放到li里面。
-                        side.appendChild(tmp);
-                        tmp.appendChild(tmp_a);//添加到目录下面
-                        tmp.setAttribute('name', 'topic-list');
-                        tmp_a.setAttribute('href', "#"+head[i].id);//设置定位
-                        tmp_a.setAttribute('target', "_self");
-                        tmp_a.innerHTML = '&nbsp' + topic.innerHTML;//填写内容
-                        tmp = document.createElement("ul");
-                        side.appendChild(tmp);
-                        subtop = tmp;
-                        // text.innerHTML = topic.innerHTML;
-                    }
-                    else{
-                        tmp = document.createElement("li");//创建一个列表元素li。
-                        tmp_a = document.createElement("a");//创建一个超链接元素a等会放到li里面。
-                        subtop.appendChild(tmp);
-                        tmp.appendChild(tmp_a);
-                        tmp.setAttribute('name', 'sub-topic-list');
-                        tmp_a.setAttribute('href', "#"+head[i].id);//设置定位.
-                        tmp_a.setAttribute('target', "_self");
-                        tmp_a.innerHTML = '&nbsp;&nbsp;&nbsp' + topic.innerHTML;//填写内容
-                    }
-                }
-            };
-            getAndSetLabel();
-    </script>
+    <script>sideInit();</script>
 </body>
 </html>
