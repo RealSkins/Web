@@ -231,12 +231,12 @@
 }
 
 .sidebar {
-    width: 15%;
+    width: 22%;
     height: 500px;
     float: right;
     position: sticky;
     top: 2em;
-    right: 8%;
+    right: 3%;
     transform: translateY(10%);
 }
 
