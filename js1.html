@@ -27,7 +27,7 @@
 </head>
 
 <body>
-    <div class="scroll"></div>
+    <div class="scroll" id="s"></div>
     <div class="output" id="output"></div>
     <div id="area">
         <p>很长很长的滚动条</p>
@@ -156,13 +156,10 @@
     </div>
 </body>
 <script>
-    function listen(){
-        var output = document.getElementById("output");
-        var top = document.documentElement.scrollTop;
-        output.innerHTML = top;
-        console.log(top);
-    }
-    window.onscroll = listen();
+    var total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    document.addEventListener("scroll", () =>
+        document.getElementById("s").style.width = ((document.documentElement.scrollTop/total) * 100).toFixed(1) + '%'
+    );
 </script>
 
 </html>
