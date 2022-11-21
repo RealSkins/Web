@@ -50,21 +50,9 @@ function getAndSetLabel() {
     }
 };
 
-function interesting(){
-    var rand = Math.floor(Math.random()*30000);
-    var target = document.getElementById("interesting");
-    if(rand < 10000){
-        target.innerHTML = "HTML";
-    }
-    else if(rand >= 10000 && rand < 20000){
-        target.innerHTML = "CSS";
-    }
-    else{
-        target.innerHTML = "JS";
-    }
-}
+
 
 function sideInit(){
     getAndSetLabel();
-    interesting();
+    
 }

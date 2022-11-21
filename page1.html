@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>实验页面</title>
+    <title>关于HTML</title>
     <base target="_blank">
     <link rel="stylesheet" href="style/page1.css">
     <link rel="shortcut icon" href="image/icon.ico">
@@ -18,15 +18,15 @@
             <span class="home"><a href="index" target="_self"><img src="image/logo.png"><em class="home1">HOME</em></a></span>
             <ul class="nav">
                 <li><a href="index" target="_self">首页</a></li>
-                <li>第二项</li>
-                <li>第三项</li>
+                <li><a href="#" target="_self" style="color: #ff9050;">HTML</a></li>
+                <li><a href="page2" target="_self">头歌</a></li>
                 <li>第四项</li>
                 <li>第五项</li>
                 <li>第六项</li>
             </ul>
         </div>
         <div class="bottom">
-            <h1>运用CSS样式表实现网页美化</h1>
+            <h1>运用HTML-CSS-JS实现网页美化</h1>
             <p>created by Huang</p>
         </div>
     </div>
@@ -225,6 +225,10 @@ a:hover::after {
             </code>
         </pre>
 
+        <h4>外部样式的导入</h4>
+
+        <p>可以发现，这个页面的所有样式全部从外部样式表导入，方便处理单个文件，但是其实一般来说一个css也只对应一个html，其他的页面还是得用自己的样式表，只是有很大一部分是<span class="emp">Ctrl+C</span>和<span class="emp">Ctrl+V</span>来的。</p>
+
         <h3>III-JS 部分</h3><hr />
         
         <h4>显示侧边栏</h4>
@@ -332,5 +336,22 @@ a:hover::after {
 	<script>hljs.highlightAll();</script>
 	<script>hljs.initLineNumbersOnLoad();</script>
     <script>sideInit();</script>
+    <script>
+            function interesting() {
+                var rand = Math.floor(Math.random() * 30000);
+                var target = document.getElementById("interesting");
+                if (rand < 10000) {
+                    target.innerHTML = "HTML";
+                }
+                else if (rand >= 10000 && rand < 20000) {
+                    target.innerHTML = "CSS";
+                }
+                else {
+                    target.innerHTML = "JS";
+                }
+            }
+
+            interesting();
+    </script>
 </body>
 </html>
