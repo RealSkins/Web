@@ -14,10 +14,10 @@
 
     <div class="bgdiv">
         <div class="top">
-            <span class="home"><a href="index" target="_self"><img src="image/logo.png"><em class="home1">HOME</em></a></span>
+            <span class="home"><a href="index.html" target="_self"><img src="image/logo.png"><em class="home1">HOME</em></a></span>
             <ul class="nav">
-                <li><a href="index" target="_self">首页</a></li>
-                <li><a href="page1" target="_self">HTML</a></li>
+                <li><a href="index.html" target="_self">首页</a></li>
+                <li><a href="page1.html" target="_self">HTML</a></li>
                 <li><a href="#" target="_self" style="color: #ff9050;">头歌</a></li>
                 <li>第四项</li>
                 <li>第五项</li>
@@ -45,7 +45,7 @@
 
         <p>我有幸在敲这段代码之前学过一点点的算法，知道还有深搜这个东西，这个题目不知道这个算法的就是纯粹的恶心人，循环10^10次，电脑知道了都后悔为啥不烂厂里</p>
 
-        <p>我的想法是算出fghij的所有可能情况，用fghij*x去算abcde，然后判断如果这俩乘积大于99999了就直接跳出(<del>后来一想为什么不直接用99999/x去限定fghij的范围？</del>)，所以我们第一个解决计算fghij的可能情况的函数function</p>
+        <p>我的想法是算出fghij的所有可能情况，<span class="emp">用fghij*x去算abcde</span>，然后判断如果这俩乘积大于99999了就直接跳出(<del>后来一想为什么不直接用99999/x去限定fghij的范围？</del>)，所以我们第一个解决计算fghij的可能情况的函数function</p>
 
         <pre>
             <code class="language-c">void function(int *p, int *divior, int i) {
@@ -154,7 +154,7 @@ void judge(int* p) {
 
         <p>不如取名叫折磨类游戏好了。我最开始写的时候只申请了一个一位数组(<del>真是个傻逼</del>)，想法是在上下左右四周设置墙，后来发现只需要右下设墙就行了，而且因为这么一搞我倒还为怎么去初始化大伤脑筋，吐了。</p>
 
-        <p>在检测是否可以消除时用了一个递归的方法，事实上检测时只需要定一个点向右和向下搜索就好了，甚至在与右边界和下边界的距离小于2时便可以停止搜索，确实代码也不多，因为向右和向下的代码基本相同，实际上定义一个方向就好了。</p>
+        <p>在检测是否可以消除时用了一个递归的方法，事实上检测时只需要定一个点<span class="emp">向右和向下搜索</span>就好了，甚至在与右边界和下边界的距离小于2时便可以停止搜索，确实代码也不多，因为向右和向下的代码基本相同，实际上定义一个方向就好了。</p>
 
         <pre>
             <code class="language-c whole">#define _CRT_SECURE_NO_WARNINGS
@@ -503,7 +503,7 @@ void dfs() {
 
 		<h4>通过指针取出字节</h4>
 
-		<p>这个题目挺有意思，要求利用共用体共用一个相同的地址，以及规定变量的位域来控制读取的内容。所以实际操作就是声明一个结构体类型，里面有8个占4比特的整形，放到一个含有char类型的共用体内，最后以16进制输出就可以了。需要注意的一点就是这个整形一定要是unsigned，不信自己去试试。</p>
+		<p>这个题目挺有意思，要求利用共用体共用一个相同的地址，以及<span class="emp">规定变量的位域</span>来控制读取的内容。所以实际操作就是声明一个结构体类型，里面有8个占4比特的整形，放到一个含有char类型的共用体内，最后以16进制输出就可以了。需要注意的一点就是这个整形一定要是unsigned，不信自己去试试。</p>
 
 		<p>没有代码？确实没有</p>
 
@@ -605,12 +605,229 @@ void calc(int* num1, int* num2, int* result) {
 			</code>
 		</pre>
 
+		<h3>IV-实验七 结构与联合</h3>
+
+		<h4>回文字符串</h4>
+
+		<p>题目要求设计单向链表，所以如果要判断，我的办法是用<span class="emp">快慢指针</span>，快指针走两步了慢指针走一步，同时慢指针将走过的节点反向，快指针走到NULL时，慢指针走过的节点已经组成一个新链表，然后再从这个慢指针这里开始向两头搜索，判断是否回文，代码很乱，能跑就行。</p>
+
+		<p>应当注意的是<span class="emp">具有奇数个节点的链表和具有偶数个节点的链表要分开处理</span>，很讨厌。</p>
+
+		<pre>
+			<code class="language-c whole">//设计部分函数。
+void createLinkList(C_NODE** headp, char s[])
+{
+    int i = 1;
+    C_NODE* tmp = NULL;
+    if (s[0] == '\0')
+        return;
+    *headp = (C_NODE*)calloc(1, sizeof(C_NODE));
+    tmp = *headp;
+    tmp->data = s[0];
+    while (s[i] != '\0') {
+        tmp->next = (C_NODE*)calloc(1, sizeof(C_NODE));
+        tmp = tmp->next;
+        tmp->data = s[i++];
+    }
+}
+
+void judgePalindrome(C_NODE* head)
+{
+    C_NODE* fast = head, * slow = head, 
+		*sslow = NULL, *pre = slow;
+    int count = 0, flag = 1;
+    if (fast == NULL) {
+        printf("empty");
+        return;
+    }
+        
+    count++;
+    while (true) {
+        fast = fast->next;
+        if (fast == NULL)
+            break;
+        count++;
+        fast = fast->next;
+        if (fast == NULL)
+            break;
+        count++;
+        pre = slow;
+        slow = slow->next;
+        pre->next = sslow;
+        sslow = pre;
+    }
+    if (count % 2) {
+        slow = slow->next;
+        while (slow != NULL) {
+            if(slow->data != sslow->data){
+                printf("false");
+                return;
+            }
+            slow = slow->next;
+            sslow = sslow->next;
+        }
+        printf("true");
+    }
+    else {
+        pre = slow;
+        slow = slow->next;
+        pre->next = sslow;
+        while (slow != NULL) {
+            if (slow->data != pre->data) {
+                printf("false");
+                return;
+            }
+            slow = slow->next;
+            pre = pre->next;
+        }
+        printf("true");
+    }
+}
+			</code>
+		</pre>
+
+		<h4>逆波兰表达式</h4>
+
+		<p>挺有趣的题目，因为<span class="emp">数字在前，运算符在后，考虑用栈结构，遇到数进栈，遇到符号出栈两个数</span>，栈元素归零时表达式计算完成。</p>
+
+		<pre>
+			<code class="language-c whole">#define _CRT_SECURE_NO_WARNINGS
+#include &ltstdio.hgt
+#include &ltstdlib.hgt
+
+typedef struct Stacknode {
+	int data;
+	struct Stacknode* next;
+	struct Stacknode* pre;
+}Stacknode;
+
+typedef struct Stack {
+	Stacknode* top;
+	int size;
+}Stack;
+Stack stack;
+
+void stack_init();
+void stack_push(int);
+int stack_pop();
+void stack_destroy();
+void mygets(char*, int);
+void fun(char*);
+
+int main() {
+	char str[100];
+	stack_init();
+	mygets(str, 100);
+	fun(str);
+}
+
+void mygets(char* str, int n) {
+	int i = -1;
+	fgets(str, n, stdin);
+	while (str[i] != '\n' && str[i] != '\0')
+		i++;
+	str[i] = '\0';
+	return;
+}
+
+void fun(char* str) {
+	char* p = str;
+	int num = 0, i = 0, tmp = 0;
+	while (*p != '\0') {
+		if (*p <= '9' && *p >= '0') {
+			while (*p != ' ' && *p != '\0') {
+				num = num * 10 + *p - '0';
+				p++;
+			}
+			stack_push(num);
+			num = 0;
+		}
+		else {
+			switch (*p) {
+			case '+':
+				stack_push(stack_pop() + stack_pop());
+				break;
+			case '-':
+            if (p[1] <= '9' && p[1] >= '0') {
+					p++;
+					while (*p != ' ' && *p != '\0') {
+						num = num * 10 + *p - '0';
+						p++;
+					}
+					stack_push(-num);
+					num = 0;
+					p++;
+					continue;
+				}
+				tmp = stack_pop();
+				stack_push(stack_pop() - tmp);
+				break;
+			case '*':
+				stack_push(stack_pop() * stack_pop());
+				break;
+			case '/':
+				tmp = stack_pop();
+				stack_push(stack_pop() / tmp);
+				break;
+			}
+			p++;
+		}
+		p++;
+	}
+	printf("%d", stack_pop());
+	return;
+}
+
+void stack_init() {
+	stack.size = 0;
+	stack.top = NULL;
+	return;
+}
+
+void stack_push(int num) {
+	Stacknode* tmp;
+	tmp = (Stacknode*)calloc(1, sizeof(Stacknode));
+	if (stack.size == 0)
+		tmp->pre = NULL;
+	else 
+		tmp->pre = stack.top;
+	tmp->next = NULL;
+	tmp->data = num;
+	stack.top = tmp;
+	stack.size++;
+	return;
+}
+
+int stack_pop() {
+    if(stack.size == 0){
+        printf("error!");
+        exit(0);
+    }
+	int num;
+	Stacknode* tmp;
+	num = stack.top->data;
+	tmp = stack.top;
+	stack.top = stack.top->pre;
+	stack.size--;
+	free(tmp);
+	return num;
+}
+
+void stack_destroy() {
+	while (stack.size)
+		stack_pop();
+}</code>
+		</pre>
+
+		<p>要注意的是<span class="emp">负数的处理</span>，我在后来才想到还有负数这个东西，所以临时在“-”情况下补了一段代码。</p>
+
 		<p>未完待续。。。</p>
 		<hr />
 	</div>
+	<!-- POWERED BY HUANG -->
     <footer>
         <div>Constructed by Huang</div>
-        <div><a href="https://www.hust.edu.cn/">Hubei University of Science and Technology</a></div>
+        <div><a href="https://www.hust.edu.cn/">Huazhong University of Science and Technology</a></div>
         <div>Finished at <a href="https://time.is/zh/China">2022/11/14</a></div>
         <div>
             <a href="https://github.com/RealSkins"><img src="image/github.png">Github</a>
