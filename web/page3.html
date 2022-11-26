@@ -33,7 +33,6 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            opacity: 0.9;
             margin: 0;
             left: 0;
             top: 0;
@@ -83,7 +82,7 @@
                 top: 82vh;
             }
         }
-        .sec1, .sec2 {
+        .sec1, .sec2, .sec3 {
             width: 100%;
             height: 100vh;
             font-size: 18px;
@@ -94,11 +93,49 @@
             align-items: center;
             justify-content:center
         }
-        .sec1 {
-            background-color:lightblue;
+        .sec1 .bg{
+            opacity: 0;
+            position: relative;
+            width: 100%;
+            top: -10px;
+            z-index: -2;
+            animation-name: bgimg;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+            animation: bgimg 2s ease-in-out 0.3s forwards;
         }
+        .sec1 .innerSec1 {
+            display: flex;
+            z-index: -1;
+            position: absolute;
+            top: 135vh;
+            left: 2%;
+            width: 70%;
+            height: 60vh;
+            flex-direction: row;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+            transform: translateX(-120%);
+            transition: all 1s;
+        }
+        .sec1 .innerSec1 .img1 {
+            position: relative;
+            left: 2%;
+            height: 60vh;
+            border-radius: 5px;
+        }
+        .sec1 .innerSec1 .text {
+            padding: 2em;
+            margin-left: 2em;
+            height: 60vh;
+            line-height: 1.8em;
+        }
+
         .sec2 {
             background-color:lightcoral;
+        }
+        .sec3 {
+            background-color:lightblue;
         }
         .sideul {
             position: absolute;
@@ -196,16 +233,17 @@
 			width: auto;
 		}
 	
-		.top a {
+		.top a, .innerSec1 a {
 			text-decoration: none;
 			color: inherit;
 			width: auto;
 			transition-duration: 0.3s;
 		}
 	
-		.top a:hover {
+		.top a:hover, .innerSec1 a:hover {
 			color: #ff9050;
 		}
+
     </style>
 </head>
 <body>
@@ -223,14 +261,21 @@
     </div>
     <div class="container" id="container">
         <div class="banner">
-        <img src="../image/bg-3.jpg" alt="没有？" id="bg" class="bg">
-        <div class="text">
-            HELLO, HUANG!<br />
-            Welcome to Genshin!
-        </div>
-        <img src="../image/down.png" alt="" id="down" class="down">
+            <img src="../image/bg-3.jpg" alt="没有？" id="bg" class="bg">
+            <div class="text">
+                HELLO, HUANG!<br />
+                Welcome to Genshin!
+            </div>
+            <img src="../image/down.png" alt="" id="down" class="down">
         </div>
         <div class="sec1" id="sec1">
+            <img src="../image/bg-4.jpg" alt="没有？" class="bg">
+            <div class="innerSec1" id="innerSec1">
+                <img src="../image/Genshin-2.jpg" alt="没有？" class="img1">
+                <div class="text">500+天较高纯度原批，日常深渊打不满星，抽卡终极非，大保底吃满。<br />你说的对，但是<a href="https://ys.mihoyo.com/">《原神》</a>是由米哈游自主研发的一款全新开放世界冒险游戏。游戏发生在一个被称作「提瓦特」的幻想世界，在这里，被神选中的人将被授予「神之眼」，导引元素之力‌​​​‌‌‌‌‌‌‌‌​​‌‌​‌‌‌​‌​。你将扮演一位名为「旅行者」的神秘角色，在自由的旅行中邂逅性格各异、能力独特的同伴们，和他们一起击败强敌，找回失散的亲人——同时，逐步发掘「原神」的真相。<br />我经过两年半的打拼（bushi）终于来到了58级并稳步向59级迈进，希望看到这里的能加我一个好友，我的id：176036772<br /><br />没有了，接着往下看吧</div>
+            </div>
+        </div>
+        <div class="sec2" id="sec2">
             <div class="main">
                 <h3>在这里说两句</h3><hr />
                 <p>这个网页是我原批生涯的见证，同时也是一个十分水的网页，前两个网页做得我已经心力憔悴了，这个页面拼着小命实现了几个JS的效果之后就完全不想再加什么别的东西了。在这里插句题外话，我有幸见识到了用DreamWeaver做出来的网页的源代码，只能说是叹为观止，望而生畏，那种代码的可维护性是数一数二的差，或者说根本就读不了，要在上面手动实现一个什么功能简直就是痴人说梦，所以说选择用纯代码的方式去实现一个网页才是最考验一个人的耐心，能力的。一旦把css的样式调整好，放在其他网页内是代码的复用性是相当高的，据我通过文档对比是95%以上，基本是第一次最痛苦，后面就异常轻松，如果能够通过JS（或python）去读入文档，按照既定的CSS样式去自动生成，理论上只要遵循一定的格式规范（如markdown），其实是可以抛开格式而只去关注内容的。</p>
@@ -239,7 +284,7 @@
                 <p>截至到今天（11月24日），我在提瓦特大陆游历的时间已经接近两年，这两年不光是在游戏里，也是在现实中都经历了很多，同时抽卡也是一如既往的非，已过两年而不曾变易，这是我的id：176036772.希望看到这的人能来加我一个好友，给我孤独的提瓦特之旅增添一抹亮色。</p>
             </div>
         </div>
-        <div class="sec2" id="sec2">
+        <div class="sec3" id="sec3">
             <div class="main">
                 <h3>本网页的特点及其代码</h3><hr />
                 <h4>I-网页全屏</h4>
@@ -254,6 +299,7 @@
     </div>
     <ul class="sideul">
         <li class="active" name="side"></li>
+        <li name="side"></li>
         <li name="side"></li>
         <li name="side"></li>
     </ul>
@@ -299,11 +345,18 @@
             list[index].className = '';
             list[i].className = 'active';
             index = i;
+            if(i == 1){
+                initSec1()
+            }
             container.style.top = -index * screenHeight + 'px';
         }
-    </script>
-    <script>
 
+        function initSec1(){
+            const innerSec1 = document.getElementById("innerSec1");
+            setTimeout(() => {
+                innerSec1.style.transform = "translateX(0%)";
+            }, 500);
+        }
     </script>
 </body>
 </html>
