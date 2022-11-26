@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于HTML</title>
+    <base target="_blank">
+    <link rel="stylesheet" href="style/page1.css">
+    <link rel="shortcut icon" href="../image/icon.ico">
+</head>
+
+<body>
+
+    <a class="target-fix" id="top"></a>
+
+    <div class="bgdiv">
+        <div class="top">
+            <span class="home"><a href="../index.html" target="_self"><img src="../image/logo.png"><em
+                        class="home1">HOME</em></a></span>
+            <ul class="nav">
+                <li><a href="../index.html" target="_self">首页</a></li>
+                <li><a href="#" target="_self" style="color: #ff9050;">HTML</a></li>
+                <li><a href="page2.html" target="_self">头歌</a></li>
+                <li><a href="page3.html" target="_self">原</a></li>
+                <li><a href="page4.html" target="_self">个人空间</a></li>
+                <li><a href="#" target="_self">寝室主页</a></li>
+            </ul>
+        </div>
+        <div class="bottom">
+            <h1>运用HTML-CSS-JS实现网页美化</h1>
+            <p>created by Huang</p>
+        </div>
+    </div>
+    <div class="sidebar">
+        <ul id="sidebar" class="sidebar-topic"></ul>
+    </div>
+    <div class="main" id="main">
+        <br />
+        <p><span
+                class="begin">我</span>第一次上讲解网页的课时电脑上没有装Dreamweaver，刚好本人在这个课前一个星期开始学html，所以干脆死敲代码，硬怼html,css和js，虽然最后一个还才学了一点，但是初见成效，所以将这个页面的代码放在这里解释一下。
+        </p>
+
+        <h3>I-HTML 部分</h3>
+        <hr />
+
+        <h4>当前页面</h4>
+        <p id="text">这里有一个实验</p>
+        <p>本页面最初受到<a
+                href="https://2heng.xin/theme-sakura/">这个页面</a>的启发，才能弄出这样的页面，但是，由于学习时间实在是太短，js还没怎么学会，暂时只能在html页面内编辑正文(main)，没有markdown生成，不过侧边栏已经差不多可以运行，通过设置正文内<span
+                class="emp">name</span>和<span class="emp">id</span>进行控制，上图。<img class="img1" src="../image/screen.png"
+                alt="未知原因，图不见了。" title="封面？"></p>
+
+        <h4>主页面</h4>
+
+        <p><a href="../index.html">这里</a>是主网站，为了贯彻<span class="emp">大道至简，大音希声</span>的思想，主页面非常的。。。质朴而且简练，一定是这个原因！</p>
+
+        <p>这个网页超级无比的简单，以至于我感觉只用Dreamweaver都可以做出来(<del>我认为这张网页就凭dreamweaver的图形化界面时绝对实现不了的，只能靠敲代码一行一行堆出来</del>)。<img
+                class="img1" src="../image/index.png" alt="未知原因，图不见了。" title="封面？"></p>
+
+        <h4>推荐使用的编写软件</h4>
+
+        <p>陈加忠老师在讲授HTML时教的时dw，但是我用的仍是vscode手写代码，开始挺后悔，后来看见其他人做网页那个效率和效果。。。一言难尽，庆幸使用的vscode，最后来还是学了一些关于前端东西，算是多多少少有一点收获。
+        </p>
+
+        <h4>绝对路径和相对路径</h4>
+
+        <p>这个页面内的所有引用全部使用了相对路径，但是有一点小小的坑，我是用的是vscode里面一个叫<span class="emp"><a
+                    href="https://github.com/ritwickdey/vscode-live-server-plus-plus">live
+                    server</a></span>的插件，我之前在所有引用本地文件时在文件夹前加<span>/</span>正斜杠，在这个live
+            server中打开完全没有问题，但是单独打开网页就会找不到文件，所以后来就把正斜杠删掉了。</p>
+
+        <p>其次就是跳转的我自己的其他页面时，在本地需要加后缀<span class="emp">.html</span>，而挂在github上时是不需要加.html的，于是我就删掉后缀了，特此说明。</p>
+
+        <h3>II-CSS 部分</h3>
+        <hr />
+
+        <h4>highlight插件</h4>
+
+        <p>话不多说先上代码，代码块由<span
+                class="emp">highlight.js包</span>生成，我的做法是在这个页面对应的css样式表内import一个"/highlight/styles/github-dark-dimmed.min.css"样式表,
+            然后结尾引入<a href="https://highlightjs.org/">/highlight/highlight.min.js"</a>(格式化和高亮生成代码)和<a
+                href="http://wcoder.github.io/highlightjs-line-numbers.js/">/highlight/highlightjs-line-numbers.min.js</a>(代码前加行标)就像<a
+                href="#code1" target="_self">这样。</a></p>
+
+        <a class="target-fix" id="code1"></a>
+
+        <pre>
+            <code class="language-c, low">#define _CRT_SECURE_NO_WARNINGS
+#include &ltstdio.h&gt
+#include &ltstdlib.h&gt
+
+int main(){
+    printf("Hello World!\n");
+    return 0;
+}
+            </code>
+        </pre>
+
+        <h4>超链接的过渡动画</h4>
+
+        <p>同样，还有一些地方运用到了css的特殊设计，比如说这个<a href="#" target="_self">超链接</a>，这个使用了<span class="emp">伪类选择器</span>和<span
+                class="emp">伪元素</span>，在&lta&gt后加伪元素::after，设置x方向过渡从不可见到拉长，设置动画时间0.5s(当然也可以设置不同的时间，<del>比如可以设置100万年
+                ?</del>)。上代码。</p>
+
+        <pre>
+            <code class="css">a {
+    position: relative;
+    text-decoration: none;
+    color: orange;
+    transition: all 0.5s;
+}
+            
+a::after {
+    content: '';
+    width: 100%;
+    top: 100%;
+    height: 1px;
+    left: 0;
+    background-color: currentColor;
+    display: inline-block;
+    position: absolute;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: all 0.5s;
+}
+            
+a:hover {
+    color: #ff8500;
+}
+            
+a:hover::after {
+    transform: scaleX(1);
+}
+            </code>
+        </pre>
+
+        <h4>页面加载时的动画</h4>
+
+        <p>使用@keyframes创建过渡关键帧并在想要产生过渡的元素添加animation的一系列标签，就可以达到背景向下淡入，文字向上出现的效果了。我最初还想让顶栏在页面位于封面时不显示，向下翻动时淡入，后来发现这也要JS，就先算了，侧边栏的效果也一样，暂时还不会干。
+        </p>
+
+        <pre>
+            <code class="css">.bgdiv {
+    background-image: url(image/bg.png);
+    background-position: center -10px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    top: -10px;
+    height: 530px;
+    margin: -26px;
+    width: 102%;
+    z-index: 0;
+    animation-name: bganima;
+    animation-duration: 0.5s;
+}
+            
+@keyframes bganima{
+    0% {
+        opacity: 0;
+        height: 400px;
+        background-position: center -140px;
+    }
+    100% {
+        opacity: 1;
+        height: 530px;
+        background-position: center -10px;
+    }
+}
+            </code>
+        </pre>
+
+        <p>背景部分的过渡。</p>
+
+        <pre>
+            <code class="css">.main {
+    position: relative;
+    left: 10%;
+    max-width: 65%;
+    margin-top: 40px;
+    animation-name: mainanima;
+    animation-duration: 0.6s;
+    /* border-right: 1px solid#aaaaaa; */
+}
+                
+@keyframes mainanima {
+    0% {
+        opacity: 0;
+        transform: translateY(400px);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+            </code>
+        </pre>
+
+        <p>文字部分的过渡。</p>
+
+        <h4>锚点链接跳转时的平滑滚动</h4>
+
+        <p>通过侧边栏定位正文时有一个<span class="emp">非常突兀</span>的地方，就是跳转是一下子直接切过去，看着特别不舒服，解决方法是在CSS里面<span
+                class="emp">设置整体属性scroll-behavior为smooth</span>。这样点击的时候就是滚动过去的。</p>
+
+        <h4>末尾的方块</h4>
+
+        <p>在<a href="#bottom" target="_self">文章结尾</a>的地方我加了一个小小的CSS动画，就是一个方块从左向右再向左往复运动，设置次数无限，设置周期3s，看着还挺好玩的就留在这里了。</p>
+
+        <pre>
+            <code class="css">.main .box {
+    position: relative;
+    top: 20px;
+    width: inherit;
+    height: 8em;
+}
+
+.main .box .boxanima {
+    display: inline-block;
+    width: 72px;
+    height: 64px;
+    position: absolute;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 64px;
+    background-color: #fa7070;
+    color: #4b4b4b;
+    font-size: 20px;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif', 'source-han-serif-sc', 'PT Serif', 'SongTi SC', 'MicroSoft Yahei', Georgia, serif;
+    animation-name: boxanima;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes boxanima {
+    0% {
+        left: 0%;
+    }
+    50% {
+        left: 90%;
+        transform: rotate(360deg);
+    }
+    100% {
+        left: 0%;
+        transform: rotate(720deg);
+    }
+}
+            </code>
+        </pre>
+
+        <h4>外部样式的导入</h4>
+
+        <p>可以发现，这个页面的所有样式全部从外部样式表导入，方便处理单个文件，但是其实一般来说一个css也只对应一个html，其他的页面还是得用自己的样式表，只是有很大一部分是<span
+                class="emp">Ctrl+C</span>和<span class="emp">Ctrl+V</span>来的。</p>
+
+        <h3>III-JS 部分</h3>
+        <hr />
+
+        <h4>显示侧边栏</h4>
+
+        <p>前面已经说过，我不很会JS，等我什么时候会了就再来增加这部分吧，侧边栏暂时先不放了，学业繁忙，头发要紧。。。</p>
+
+        <p>急急忙忙竟然把JavaScript学了不少，像模像样敲了个自动生成侧边栏，代码可以优化，而且继续优化，起码现在知道的就是这段代码重复性太高，而且做了不少无用功，以至于前面一段可以直接用<span
+                class="emp">querySelector</span>(<del>当时我还不知道</del>)，最后不知道敲的个什么鬼东西。</p>
+
+        <pre>
+            <code class="JavaScript">function getAndSetLabel() {
+    var label;
+    var head;
+    var i;
+    var tmp, tmp_a;
+    var subtop;
+    var topic;
+    var side = document.getElementById("sidebar");
+    var area = document.getElementById("main");
+    for (i = 1; i <= 4; i++) {
+        head = area.getElementsByTagName('h' + i);
+        for (let j = 0; j < head.length; j++) {
+            head[j].setAttribute('name', 'h');
+        }
+    }
+    head = document.getElementsByName('h');
+    for (i = 0; i < head.length; i++) {
+        label = 'topic-' + (i + 1);
+        head[i].setAttribute('id', label);
+    }
+    // var test = document.getElementById("text");
+    for(i = 0; i < head.length; i++){
+        topic = document.getElementById('topic-'+(i+1));
+        if(head[i].tagName == 'H3'){
+            // test.innerHTML += topic.innerHTML;
+            tmp = document.createElement("li");//创建一个列表元素li。
+            tmp_a = document.createElement("a");//创建一个超链接元素a等会放到li里面。
+            side.appendChild(tmp);
+            tmp.appendChild(tmp_a);//添加到目录下面
+            tmp.setAttribute('name', 'topic-list');
+            tmp_a.setAttribute('href', "#"+head[i].id);//设置定位
+            tmp_a.setAttribute('target', "_self");
+            tmp_a.innerHTML = '&nbsp' + topic.innerHTML;//填写内容
+            tmp = document.createElement("ul");
+            side.appendChild(tmp);
+            subtop = tmp;
+            // text.innerHTML = topic.innerHTML;
+        }
+        else{
+            tmp = document.createElement("li");//创建一个列表元素li。
+            tmp_a = document.createElement("a");//创建一个超链接元素a等会放到li里面。
+            subtop.appendChild(tmp);
+            tmp.appendChild(tmp_a);
+            tmp.setAttribute('name', 'sub-topic-list');
+            tmp_a.setAttribute('href', "#"+head[i].id);//设置定位.
+            tmp_a.setAttribute('target', "_self");
+            tmp_a.innerHTML = '&nbsp;&nbsp;&nbsp' + topic.innerHTML;//填写内容
+        }
+    }
+};
+            getAndSetLabel();
+            </code>
+        </pre>
+
+        <p>显示不完整？等我以后以后以后加一个全屏。。。</p>
+
+        <h4>底部移动的方块</h4>
+
+        <p><a href="#bottom"
+                target="_self">最下面</a>是一个移动的块，上文也说了,但是加了一点更有趣的东西，每次刷新页面里面可能会显示不同的内容(<del>是啥自己去刷刷看</del>)，用的是JS的<span
+                class="emp">Math.randon</span>函数，用<a href="#bottom" target="_self">这个链接</a>快速到达底部哦。</p>
+
+        <h3>IV-一些问题</h3>
+        <hr />
+
+        <p>2022/11/18</p>
+
+        <p>理论上还缺少一个监视滚动条的脚本，然后翻页翻到哪时就把侧边栏的那一条给它加黑加粗，但是我懒得搞了，现在看见JS就像吐，以后如果工作绝对不碰前端。</p>
+
+        <p id="point1">但是侧边栏的跳转有一个很大的问题，就是单纯使用html提供的锚点跳转会导致<span
+                class="emp">顶栏遮挡住一部分内容</span>，解决办法是截停url的跳转动作并使用JS进行跳转。万能的CSS竟然还有不能设置的地方，感觉非常地难受，先就这么放着吧，等我什么时候有时间了再去追加这段玩意。
+        </p>
+
+        <p>还好<a href="#point1"
+                target="_self">这个问题</a>马上得到了解决，就是在js初始化侧边栏的时候给每一个锚点前面加一个暗锚，让其定位向上偏移，而且侧边栏指向那个暗锚，这要就基本解决了。不过非侧边栏的锚点链接这样就要手动调整，就拉倒好了。
+        </p>
+
+        <p>2022/11/19</p>
+
+        <p>在用侧边栏定位的时候发现一个小小的细节，点击之后url处也会多出一个#什么什么，所以可以考虑阻止html提供的跳转而改用js自己写一个函数来滚动到对应位置。不过什么时候写就不知道了，难度太大，我不想搞，爬。</p>
+        <hr />
+
+        <a href="#top" target="_self">回到顶部</a>
+
+        <a class="target-fix" id="bottom"></a>
+
+        <div class="box">
+            <div class="boxanima" id="interesting"></div>
+        </div>
+
+    </div>
+    <!-- POWERED BY HUANG -->
+    <footer>
+        <div>Constructed by Huang</div>
+        <div><a href="https://www.hust.edu.cn/">Huazhong University of Science and Technology</a></div>
+        <div>Finished at <a href="https://time.is/zh/China">2022/11/14</a></div>
+        <div>
+            <a href="https://github.com/RealSkins"><img src="../image/github.png">Github</a>
+            <a href="https://gitee.com/ikuuxi"><img src="../image/gitee.png">Gitee</a>
+        </div>
+    </footer>
+    <script src="highlight/highlight.min.js"></script>
+    <script src="highlight/highlightjs-line-numbers.min.js"></script>
+    <script src="script/setsidebar.js"></script>
+    <script src="script/progress.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script>hljs.initLineNumbersOnLoad();</script>
+    <script>sideInit();</script>
+    <script>progressInit();</script>
+    <script>
+        var rand = Math.floor(Math.random() * 30000);
+        var target = document.getElementById("interesting");
+        if (rand < 10000) {
+            target.innerHTML = "HTML";
+        }
+        else if (rand >= 10000 && rand < 20000) {
+            target.innerHTML = "CSS";
+        }
+        else {
+            target.innerHTML = "JS";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>代码演示</title>
+	<link rel="stylesheet" href="highlight/styles/github-dark-dimmed.min.css">
+	<style>
+		code {
+			display: block;
+			width: 70%;
+			height: 400px;
+			scrollbar-color: auto #ffb500;
+			font: 20px Source Code Pro, Consolas, Menlo, Monaco, Courier New,
+				monospace !important;
+			overflow-x: hidden;
+			overflow-y: scroll;
+			tab-size: 2em;
+		}
+		.hljs-ln-numbers {
+			display: inline-block;
+			text-align: left;
+			color: #ccc;
+			border-right: 1px solid #CCC;
+			vertical-align: top;
+			width: 2em;
+			margin-right: 1em;
+			height: 1.1em;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		<pre>
+        	<code class="language-c">#define _CRT_SECURE_NO_WARNINGS
+#include &ltstdio.h&gt
+#include &ltstdlib.h&gt
+
+typedef struct Stacknode {
+	int data;
+	struct Stacknode* next;
+	struct Stacknode* pre;
+}Stacknode;
+
+typedef struct Stack {
+	Stacknode* top;
+	int size;
+}Stack;
+Stack stack;
+
+void stack_init();
+void stack_push(int);
+int stack_pop();
+void stack_destroy();
+void mygets(char*, int);
+void fun(char*);
+
+int main() {
+	char str[100];
+	stack_init();
+	mygets(str, 100);
+	fun(str);
+}
+
+void mygets(char* str, int n) {
+	int i = -1;
+	fgets(str, n, stdin);
+	while (str[i] != '\n' && str[i] != '\0')
+		i++;
+	str[i] = '\0';
+	return;
+}
+
+void fun(char* str) {
+	char* p = str;
+	int num = 0, i = 0, tmp = 0;
+	while (*p != '\0') {
+		if (*p <= '9' && *p >= '0') {
+			while (*p != ' ' && *p != '\0') {
+				num = num * 10 + *p - '0';
+				p++;
+			}
+			stack_push(num);
+			num = 0;
+		}
+		else {
+			switch (*p) {
+			case '+':
+				stack_push(stack_pop() + stack_pop());
+				break;
+			case '-':
+				if (p[1] <= '9' && p[1] >= '0') {
+					p++;
+					while (*p != ' ' && *p != '\0') {
+						num = num * 10 + *p - '0';
+						p++;
+					}
+					stack_push(-num);
+					num = 0;
+					p++;
+					continue;
+				}
+				tmp = stack_pop();
+				stack_push(stack_pop() - tmp);
+				break;
+			case '*':
+				stack_push(stack_pop() * stack_pop());
+				break;
+			case '/':
+				tmp = stack_pop();
+				stack_push(stack_pop() / tmp);
+				break;
+			}
+			p++;
+		}
+		p++;
+	}
+	printf("%d", stack_pop());
+	return;
+}
+
+void stack_init() {
+	stack.size = 0;
+	stack.top = NULL;
+	return;
+}
+
+void stack_push(int num) {
+	Stacknode* tmp;
+	tmp = (Stacknode*)calloc(1, sizeof(Stacknode));
+	if (stack.size == 0)
+		tmp->pre = NULL;
+	else 
+		tmp->pre = stack.top;
+	tmp->next = NULL;
+	tmp->data = num;
+	stack.top = tmp;
+	stack.size++;
+	return;
+}
+
+int stack_pop() {
+	int num;
+	Stacknode* tmp;
+	num = stack.top->data;
+	tmp = stack.top;
+	stack.top = stack.top->pre;
+	stack.size--;
+	free(tmp);
+	return num;
+}
+
+void stack_destroy() {
+	while (stack.size)
+		stack_pop();
+}
+        	</code>
+		</pre>
+	</div>
+
+	<script src="highlight/highlight.min.js"></script>
+	<script src="highlight/highlightjs-line-numbers.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<script>hljs.initLineNumbersOnLoad();</script>
+</body>
+
+</html>

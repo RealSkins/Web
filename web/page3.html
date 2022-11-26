@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原</title>
+    <link rel="shortcut icon" href="../image/icon.ico">
+    <style>
+        body {
+            overflow: hidden;
+            margin: 0;
+        }
+        .container {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            margin: 0;
+            transition: all 0.5s;
+            font: normal 500 60px Verdana, Geneva, Tahoma, sans-serif, 'Microsoft Yahei';
+        }
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .banner .bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.9;
+            margin: 0;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            animation-name: bgimg;
+            animation-duration: 2s;
+        }
+        @keyframes bgimg {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0.9;
+            }
+        }
+        .banner .text {
+            font: normal 500 60px Verdana, Geneva, Tahoma, sans-serif, 'Microsoft Yahei';
+            text-shadow: 2px 2px 5px #555;
+            animation-name: bgtext;
+            opacity: 0;
+            animation-duration: 2s;
+            animation-delay: 1s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes bgtext {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        .banner .down {
+            position: absolute;
+            align-items: center;
+            top: 82vh;
+            animation: bgdown 2s ease-in-out 1s infinite;
+        }
+        @keyframes bgdown {
+            0% {
+                top: 82vh;
+            }
+            50% {
+                top: 85vh;
+            }
+            100% {
+                top: 82vh;
+            }
+        }
+        .sec1, .sec2 {
+            width: 100%;
+            height: 100vh;
+            font-size: 18px;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content:center
+        }
+        .sec1 {
+            background-color:lightblue;
+        }
+        .sec2 {
+            background-color:lightcoral;
+        }
+        .sideul {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-100%);
+        }
+        .sideul li {
+            margin: 10px;
+            font-weight: 300;
+            display: block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            text-align: center;
+            background-color: #fff;
+            transition: all 0.5s;
+        }
+        .sideul li:hover, ul .active {
+            width: 10px;
+            height: 10px;
+            transform: translateX(-25%);
+        }
+        .main {
+            position: relative;
+            padding: 2em;
+            width: 80%;
+            height: 80%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 5px #aaa;
+            
+            font: normal 400 16px 'Microsoft Yahei';
+        }
+        .main h4 {
+            text-align: left;
+            text-indent: 4em;
+            font-weight: 400;
+            font-size: 20px;
+        }
+        .main h3 {
+            font-weight: 400;
+            font-size: 20px;
+        }
+        .main p {
+            text-align: left;
+            text-indent: 2em;
+            font-size: 16px;
+            line-height: 1.6em;
+        }
+		.top {
+			font-size: 32px;
+			font-family: 'Courier New', Courier, monospace;
+			background: #fefefe;
+			height: 70px;
+			width: 100%;
+			opacity: 0.9;
+			box-shadow: 2px 2px 10px #808080;
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 2;
+		}
+	
+		.top .home1 {
+			float: left;
+			padding-left: 0.5em;
+		}
+	
+		.top .home {
+			display: block;
+			float: left;
+			margin-top: 0.6em;
+		}
+	
+		.top .home img {
+			height: 70px;
+			transform: translate(5px, -15px);
+			float: left;
+		}
+	
+		.top .nav {
+			display: inline-block;
+			text-align: center;
+			position: relative;
+			margin-top: 0.6em;
+			padding: 0;
+			left: 50%;
+            transform: translateX(-90%);
+		}
+
+		.top .nav li {
+			font-size: 22px;
+			display: inline-block;
+			width: auto;
+		}
+	
+		.top a {
+			text-decoration: none;
+			color: inherit;
+			width: auto;
+			transition-duration: 0.3s;
+		}
+	
+		.top a:hover {
+			color: #ff9050;
+		}
+    </style>
+</head>
+<body>
+    <div class="top">
+        <a href="../index.html" class="home" target="_self"><img src="../image/logo.png"><em
+                    class="home1">HOME</em></a>
+        <ul class="nav">
+            <li><a href="../index.html" target="_self">首页</a></li>
+            <li><a href="page1.html" target="_self" >HTML</a></li>
+            <li><a href="page2.html" target="_self">头歌</a></li>
+            <li><a href="#" target="_self" style="color: #ff9050;">原</a></li>
+            <li><a href="page4.html" target="_self">个人空间</a></li>
+            <li><a href="#" target="_self">寝室主页</a></li>
+        </ul>
+    </div>
+    <div class="container" id="container">
+        <div class="banner">
+        <img src="../image/bg-3.jpg" alt="没有？" id="bg" class="bg">
+        <div class="text">
+            HELLO, HUANG!<br />
+            Welcome to Genshin!
+        </div>
+        <img src="../image/down.png" alt="" id="down" class="down">
+        </div>
+        <div class="sec1" id="sec1">
+            <div class="main">
+                <h3>在这里说两句</h3><hr />
+                <p>这个网页是我原批生涯的见证，同时也是一个十分水的网页，前两个网页做得我已经心力憔悴了，这个页面拼着小命实现了几个JS的效果之后就完全不想再加什么别的东西了。在这里插句题外话，我有幸见识到了用DreamWeaver做出来的网页的源代码，只能说是叹为观止，望而生畏，那种代码的可维护性是数一数二的差，或者说根本就读不了，要在上面手动实现一个什么功能简直就是痴人说梦，所以说选择用纯代码的方式去实现一个网页才是最考验一个人的耐心，能力的。一旦把css的样式调整好，放在其他网页内是代码的复用性是相当高的，据我通过文档对比是95%以上，基本是第一次最痛苦，后面就异常轻松，如果能够通过JS（或python）去读入文档，按照既定的CSS样式去自动生成，理论上只要遵循一定的格式规范（如markdown），其实是可以抛开格式而只去关注内容的。</p>
+                <p>这个网页写出来的时候发现一个神奇的bug，第一次加载网页时完全正常，但是如果不在第一页时刷新会导致滚动异常，我初步估计时浏览器会记忆刷新前的位置，但是JS等全部被卸载重载，而且刷新后浏览器返回原阅读位置是在JS加载前完成的，这就导致了index的异常，解决办法很简单，就是加载完后强制执行一次回到顶端就好，但是我没改。</p>
+                <h3>言归正传</h3><hr />
+                <p>截至到今天（11月24日），我在提瓦特大陆游历的时间已经接近两年，这两年不光是在游戏里，也是在现实中都经历了很多，同时抽卡也是一如既往的非，已过两年而不曾变易，这是我的id：176036772.希望看到这的人能来加我一个好友，给我孤独的提瓦特之旅增添一抹亮色。</p>
+            </div>
+        </div>
+        <div class="sec2" id="sec2">
+            <div class="main">
+                <h3>本网页的特点及其代码</h3><hr />
+                <h4>I-网页全屏</h4>
+                <p>这个网页用了一个全屏的方式呈现，页面隐藏了滚动条，并通过位于下方的箭头和位于右侧的导航栏进行导航。整个网页内容不多，但是要实现的代码挺多。</p>
+                <p>要使一个div刚好覆盖整个页面，首先需要设置body的外边框为0，先创建一个div “container”用于容纳需要全屏的div，container的width属性由于继承body，所以设置为100%覆盖整个网页宽度，然后创建container内的div “sec”，每个sec的宽度设100%，高度设100vh(viewHeight)，同时在定位方面，要求container相对body定位，position值为absolute，设margin外边框0，top在后面要用，每个小的sec按页面文档流定位，设position为relative。这样就实现了网页的全屏。如果需要屏蔽滚动的话需在body或html属性设置overflow：hidden。</p>
+                <p>这边有很多格式没调，想看JS自行F12。</p>
+                <h4>II-通过原生JS滚动全屏</h4>
+                <p>做法是将网页视口（屏幕）固定，通过移动container来实现整体移动的效果，其中，移动的高度通过document.body.clientHeight或者document.documentElement.clientHeight来获得。第一个页面定为index = 0，滚动一次就是index改变，container的top属性通过index来确定，同时用transition来实现平滑效果（在这里我设置的0.5s）。通过三种途径来滚动：1.鼠标滚轮；2.下方箭头；3.右侧原点。对于1可以监听鼠标滚轮滑动（“mousewheel”）,回调函数中的参数e里的属性e.wheelDelta可以确定鼠标滚轮是向上滚动了还是向下滚动了，从而设置对应动作。其他两个直接设置onclick调用回调函数，在这里不多赘述。</p>
+                <p>没有了，去别处转转吧。</p>
+            </div>
+        </div>
+    </div>
+    <ul class="sideul">
+        <li class="active" name="side"></li>
+        <li name="side"></li>
+        <li name="side"></li>
+    </ul>
+    <script>
+        const down = document.getElementById("down");
+        const container = document.getElementById("container");
+        const list = document.getElementsByName("side");
+        var index = 0;
+        var flag = 0;
+
+        window.onload = () => {
+            container.style.top = '0px';
+        }
+
+        for(let i = 0; i < list.length; i++){
+            list[i].tag = i;
+            list[i].onclick = () => {
+                scroll(i);
+            };
+        }
+
+        down.addEventListener("click", () => {
+            scroll(1);
+        });
+
+        const mouseScroll = window.addEventListener("mousewheel", (e) => {
+            let i = index;
+            if(e.wheelDelta < 0){
+                if(i < list.length-1){
+                    i++;
+                }
+            }
+            if(e.wheelDelta > 0){
+                if(i > 0){
+                    i--;
+                }
+            }
+            scroll(i);
+        });
+
+        function scroll(i){
+            let screenHeight = document.body.clientHeight || document.documentElement.clientHeight;
+            list[index].className = '';
+            list[i].className = 'active';
+            index = i;
+            container.style.top = -index * screenHeight + 'px';
+        }
+    </script>
+    <script>
+
+    </script>
+</body>
+</html>
