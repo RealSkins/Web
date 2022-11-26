@@ -100,13 +100,13 @@
         .sec2 {
             background-color:lightcoral;
         }
-        ul {
+        .sideul {
             position: absolute;
             top: 50%;
             right: 20px;
             transform: translateY(-100%);
         }
-        ul li {
+        .sideul li {
             margin: 10px;
             font-weight: 300;
             display: block;
@@ -117,7 +117,7 @@
             background-color: #fff;
             transition: all 0.5s;
         }
-        ul li:hover, ul .active {
+        .sideul li:hover, ul .active {
             width: 10px;
             height: 10px;
             transform: translateX(-25%);
@@ -183,13 +183,13 @@
 		.top .nav {
 			display: inline-block;
 			text-align: center;
-			position: absolute;
-			margin-left: -750px;
+			position: relative;
 			margin-top: 0.6em;
 			padding: 0;
 			left: 50%;
+            transform: translateX(-90%);
 		}
-	
+
 		.top .nav li {
 			font-size: 22px;
 			display: inline-block;
@@ -210,15 +210,15 @@
 </head>
 <body>
     <div class="top">
-        <span class="home"><a href="index.html" target="_self"><img src="image/logo.png"><em
-                    class="home1">HOME</em></a></span>
+        <a href="index.html" class="home" target="_self"><img src="image/logo.png"><em
+                    class="home1">HOME</em></a>
         <ul class="nav">
             <li><a href="index.html" target="_self">首页</a></li>
             <li><a href="page1.html" target="_self" >HTML</a></li>
             <li><a href="page2.html" target="_self">头歌</a></li>
             <li><a href="#" target="_self" style="color: #ff9050;">原</a></li>
-            <li>第五项</li>
-            <li>第六项</li>
+            <li><a href="page4.html" target="_self">个人空间</a></li>
+            <li><a href="#" target="_self">寝室主页</a></li>
         </ul>
     </div>
     <div class="container" id="container">
@@ -252,7 +252,7 @@
             </div>
         </div>
     </div>
-    <ul>
+    <ul class="sideul">
         <li class="active" name="side"></li>
         <li name="side"></li>
         <li name="side"></li>
@@ -264,7 +264,9 @@
         var index = 0;
         var flag = 0;
 
-        container.style.top = '0px';
+        window.onload = () => {
+            container.style.top = '0px';
+        }
 
         for(let i = 0; i < list.length; i++){
             list[i].tag = i;
