@@ -76,9 +76,14 @@
 				let tmp = move(position, step, direction);
 				if(collision(position[0]) || hithead(position)){
 					clearInterval(update);
-					display(position)
-					death();
-					alert("你干嘛哎哟~");
+					snake[0].style.backgroundColor = "red";
+					snake[0].style.zIndex = "999";
+					
+					setTimeout(() => {
+						alert("你干嘛哎哟~");
+						death();
+					}, 200);
+					return;
 				}
 				if(eat(position[0])){
 					food.className = "snake";
@@ -146,8 +151,8 @@
 		}
 		//撞墙
 		function collision(p){
-			if(p[0] <= -length || p[0] >= area.offsetWidth ||
-					p[1] <= -length || p[1] >= area.offsetHeight){
+			if(p[0] <= -length || p[0] >= area.offsetWidth - length ||
+					p[1] <= -length || p[1] >= area.offsetHeight - length){
 				return true;
 			}
 			return false;
