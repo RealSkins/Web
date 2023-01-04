@@ -1,0 +1,87 @@
+body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    position: relative;
+    background: url(../../image/gamebg.jpg) no-repeat center/cover;
+    width: 100%;
+    height: 100vh;
+}
+
+.gamecontainer {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+}
+
+.gamestatus {
+    position: relative;
+    display: flex;
+    height: calc(10% - 20px);
+    border-radius: 20px;
+    padding: 20px 20px 0;
+}
+
+.gamescore {
+    font: 20px 'Microsoft Yahei';
+    text-align: center;
+}
+
+.gamemain {
+    position: relative;
+    height: 90%;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.gamearea {
+    position: relative;
+    height: calc(100% - 40px);
+    width: 100%;
+    border: 1px solid #555;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px #777;
+}
+
+.gamearea .snake {
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: 0;
+    left: 0;
+    background-color: #555;
+    border-radius: 20%;
+}
+
+.gamearea .food {
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: 0;
+    left: 0;
+    background-color: #ff9b6d;
+    border-radius: 20%;
+}
+
+.gamestart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.gamestart button {
+    font: 30px 'Microsoft Yahei';
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    line-height: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 0;
+}
+

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" href="style/game.css">
+</head>
+<body>
+    <div class="container">
+        <div class="gamecontainer">
+			<div class="gamestatus">
+				<div class="gamescore"></div>
+			</div>
+			<div class="gamemain">
+				<div class="gamearea" tabIndex="-1">
+					<div class="gamestart"><button onclick="start()">开始游戏</button></div>
+				</div>
+			</div>
+        </div>
+    </div>
+	<script>
+		"use strict";
+		const start_button = document.querySelector(".gamestart");
+		const area = document.querySelector(".gamearea");
+		const scoreboard = document.querySelector(".gamescore");
+		var t;
+		var food;
+		var snake = [];
+		var length = Math.floor(area.offsetHeight / 30);
+		var score;
+		function start(){
+			start_button.style.display = "none";
+			for(let i = 0; i < 3; i++){
+				t = document.createElement("div");
+				t.className = "snake";
+				t.style.width = t.style.height = length + 'px';		
+				t.style.top = Math.floor(area.offsetHeight / 2 / length) * length + 'px';
+				t.style.left = Math.floor(area.offsetWidth / 2 / length) * length + 'px';
+				area.appendChild(t);
+				snake.push(t);
+			}
+			//创建蛇头，添加到元素gamearea中
+			area.focus();
+			//聚焦
+			food = createFood();
+			//创建食物
+			scoreboard.innerHTML = 0;
+			score = function(){
+				let score = 0;
+				function scoreAdd(){
+					return ++score;
+				}
+				return scoreAdd;
+			}();
+			//写入分数
+			runGame();
+			//开始游戏
+		}
+		function runGame(){
+			var speed = length;
+			var step = {
+				"left": [-speed, 0],
+				"right": [speed, 0],
+				"up": [0, -speed],
+				"down": [0, speed],
+			};
+			var direction = "right";
+			var position = [
+				[parseInt(snake[0].style.left), parseInt(snake[0].style.top)],
+				[parseInt(snake[0].style.left), parseInt(snake[0].style.top)],
+				[parseInt(snake[0].style.left), parseInt(snake[0].style.top)]
+			];
+			const update = setInterval(function(){
+				let tmp = move(position, step, direction);
+				if(collision(position[0]) || hithead(position)){
+					clearInterval(update);
+					display(position)
+					death();
+					alert("你干嘛哎哟~");
+				}
+				if(eat(position[0])){
+					food.className = "snake";
+					snake.push(food);
+					position.push(tmp);
+					food = createFood();
+					display(position);
+					scoreboard.innerHTML = score();
+				}
+			}, 50);
+			//绑定键盘事件
+			area.onkeydown = (e) => {
+				if(e.code == "ArrowUp" && direction != "down"){
+					direction = "up";
+				}else if(e.code == "ArrowDown" && direction != "up"){
+					direction = "down";
+				}else if(e.code == "ArrowLeft" && direction != "right"){
+					direction = "left";
+				}else if(e.code == "ArrowRight" && direction != "left"){
+					direction = "right";
+				}else if(e.code == "KeyQ"){
+					clearInterval(update);
+					// death();
+					// alert("Quit game");
+				}
+			}
+		}
+		//生成食物
+		function createFood(){
+			let w = Math.floor(area.offsetWidth / length);
+			let h = Math.floor(area.offsetHeight / length);
+			t = document.createElement("div");
+			t.className = "food";
+			t.style.width = t.style.height = length + 'px';
+			t.style.left = length * Math.floor(Math.random() * w) + 'px';
+			t.style.top = length * Math.floor(Math.random() * h) + 'px';
+			area.appendChild(t);
+			return t;
+		}
+		//死亡
+		function death(){
+			snake.forEach((item) => {
+				item.remove();
+			});
+			food.remove();
+			snake = [], t = null, food = null, score = 0;
+			area.onkeydown = () => {return true};
+			start_button.style.display = "block";
+		}
+		//更新一次移动
+		function move(position, step, direction){
+			position.unshift([
+				position[0][0] + step[direction][0],
+				position[0][1] + step[direction][1]
+			]);
+			let tmp = position.pop();
+			display(position);
+			return tmp;
+		}
+		function display(position){
+			snake.forEach((e, k) => {
+				e.style.left = position[k][0] + 'px';
+				e.style.top = position[k][1] + 'px';
+			});
+		}
+		//撞墙
+		function collision(p){
+			if(p[0] <= -length || p[0] >= area.offsetWidth ||
+					p[1] <= -length || p[1] >= area.offsetHeight){
+				return true;
+			}
+			return false;
+		}
+		function eat(p){
+			if(p[0] == parseInt(food.style.left) && 
+					p[1] == parseInt(food.style.top)){
+				return true;
+			}
+			return false;
+		}
+		function hithead(position){
+			let head = position[0];
+			for(let i = 4; i < position.length; i++){
+				if(position[0][0] == position[i][0] && position[0][1] == position[i][1]){
+					return true;
+				}
+			}
+			return false;
+		}
+	</script>
+</body>
+</html>

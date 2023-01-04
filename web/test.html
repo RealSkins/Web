@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/test.css">
+    
+</head>
+<body>
+    <div class="container">
+        <section class="title">一段文字</section>
+        <button class="button1" id="button1" onclick="console.log('Be Called')"></button>
+    </div>
+    <script>
+        const setPosition = function(){
+            const contain = document.querySelector('.container');
+            const title = document.querySelector('.title');
+            window.onresize = window.onload = () => {
+                let viewWidth = document.body.clientWidth || document.documentElement.clientWidth;
+                let viewHeight = document.body.clientHeight || document.documentElement.clientHeight;
+                contain.style.width = viewWidth + 'px';
+                title.style.left = viewWidth*0.5 + 'px';
+                title.style.top = viewHeight*0.5 + 'px';
+            }
+        }();
+
+    </script>
+    <script>
+        const titleTransform = function(){
+            const title = document.querySelector('.title');
+            var transform;
+            var shadow = [['4px', '2px', '-1px', '-2px', '-4px'], ['#00ffff', 'ffd700', '#3f70ff', '#adff2f', '#ffa500', '#ff0000']];
+
+            title.onmouseover = () => {
+                transform = setInterval(() => {
+                    let change = `${shadow[0][Math.floor(Math.random()*shadow[0].length)]} ${shadow[0][Math.floor(Math.random()*shadow[0].length)]} 2px ${shadow[1][Math.floor(Math.random()*shadow[1].length)]}`;
+                    console.log(change);
+                    title.style.textShadow = change;
+                }, 100);
+                return transform;
+            }
+            title.onmouseout = () => {
+                clearInterval(transform);
+                title.style.textShadow = "0px 0px 0px #fff";
+            }
+        }();
+    </script>
+    <script>
+        const mouseClick = function(){
+            const innerText = ['富强', '民主', '文明', '和谐', '自由', '平等', '公正', '法制', '爱国', '敬业', '诚信', '友善'];
+            const textColor = ['#00ffff', 'ffd700', '#3f70ff', '#adff2f', '#ffa500', '#ff0000', '#ffffff', '#aaaaaa'];
+            window.addEventListener('click', (e) => {
+                let floatDiv = document.createElement('div');
+                document.body.appendChild(floatDiv);
+                floatDiv.setAttribute('class', 'mouseClick');
+                floatDiv.innerHTML = innerText[Math.floor(Math.random()*innerText.length)]
+                floatDiv.style.top = e.clientY + 'px';
+                floatDiv.style.left = e.clientX + 'px';
+                floatDiv.style.color = textColor[Math.floor(Math.random()*textColor.length)]
+                setTimeout(() => floatDiv.remove(), 1000);
+            });
+        }();
+    </script>
+</body>
+</html>

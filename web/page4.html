@@ -120,7 +120,7 @@
             border: 2px solid #808080;
         }
 
-        .clickme {
+        .btn {
             width: 100px;
             height: 70px;
             position: absolute;
@@ -163,7 +163,7 @@
     <div class="main">
         <div class="interesting">
             <div class="counter"></div>
-            <a href="https://www.gov.cn/" class="clickme">Click me!</a>
+            <button class="btn" onclick="fun()">Click me!</button>
         </div>
         <div class="text">&nbsp;&nbsp;&nbsp;&nbsp如左可见，是一个非常非常非常非常简单的一个原生JS实现的小小小小小东西，内容还不很全面，就这样吧。里面有一个超链接。<br />&nbsp;&nbsp;&nbsp;&nbsp试试看？<br /><a href="../index.html">返回首页</a></div>
     </div>
@@ -181,7 +181,7 @@
     </script>
     <script>
         const play = document.querySelector(".interesting");
-        const box = document.querySelector(".clickme");
+        const box = document.querySelector(".btn");
         const count = document.querySelector(".counter");
         count.innerHTML = 0;
         var counter = function(){
@@ -199,6 +199,10 @@
             box.style.top = Math.floor(Math.random()*randHeight) + 'px';
             box.style.left = Math.floor(Math.random()*randWidth) + 'px';
         };
+        function fun(){
+            alert("你好像发现了什么");
+            window.location.href = "game.html";
+        }
     </script>
 </body>
 </html>
